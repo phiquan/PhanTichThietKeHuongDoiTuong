@@ -53,6 +53,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BookDAO.cs" />
+    <Compile Include="DAO\ClientDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DisplayManager.cs">
@@ -61,40 +63,40 @@
     <Compile Include="DisplayManager.Designer.cs">
       <DependentUpon>DisplayManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormAccount.cs">
+    <Compile Include="Form\FormAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormAccount.Designer.cs">
+    <Compile Include="Form\FormAccount.Designer.cs">
       <DependentUpon>FormAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormBill.cs">
+    <Compile Include="Form\FormBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormBill.Designer.cs">
+    <Compile Include="Form\FormBill.Designer.cs">
       <DependentUpon>FormBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormBook.cs">
+    <Compile Include="Form\FormBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormBook.Designer.cs">
+    <Compile Include="Form\FormBook.Designer.cs">
       <DependentUpon>FormBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormClient.cs">
+    <Compile Include="Form\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormClient.Designer.cs">
+    <Compile Include="Form\FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormLogout.cs">
+    <Compile Include="Form\FormLogout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormLogout.Designer.cs">
+    <Compile Include="Form\FormLogout.Designer.cs">
       <DependentUpon>FormLogout.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplayManager\FormReport.cs">
+    <Compile Include="Form\FormReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayManager\FormReport.Designer.cs">
+    <Compile Include="Form\FormReport.Designer.cs">
       <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -102,16 +104,22 @@
     <EmbeddedResource Include="DisplayManager.resx">
       <DependentUpon>DisplayManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplayManager\FormAccount.resx">
+    <EmbeddedResource Include="Form\FormAccount.resx">
       <DependentUpon>FormAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplayManager\FormBill.resx">
+    <EmbeddedResource Include="Form\FormBill.resx">
       <DependentUpon>FormBill.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplayManager\FormBook.resx">
+    <EmbeddedResource Include="Form\FormBook.resx">
       <DependentUpon>FormBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplayManager\FormReport.resx">
+    <EmbeddedResource Include="Form\FormClient.resx">
+      <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormLogout.resx">
+      <DependentUpon>FormLogout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

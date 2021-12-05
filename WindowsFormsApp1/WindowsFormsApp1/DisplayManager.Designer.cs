@@ -39,8 +39,11 @@ namespace WindowsFormsApp1
             this.btnSach = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Display = new System.Windows.Forms.Panel();
+            this.pictureImage = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.Display.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -162,18 +165,30 @@ namespace WindowsFormsApp1
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // Display
             // 
             this.Display.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Display.Controls.Add(this.pictureImage);
             this.Display.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Display.Location = new System.Drawing.Point(200, 0);
             this.Display.Name = "Display";
             this.Display.Size = new System.Drawing.Size(801, 577);
             this.Display.TabIndex = 1;
+            // 
+            // pictureImage
+            // 
+            this.pictureImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureImage.Image")));
+            this.pictureImage.Location = new System.Drawing.Point(0, 0);
+            this.pictureImage.Name = "pictureImage";
+            this.pictureImage.Size = new System.Drawing.Size(801, 577);
+            this.pictureImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureImage.TabIndex = 0;
+            this.pictureImage.TabStop = false;
             // 
             // DisplayManager
             // 
@@ -186,6 +201,8 @@ namespace WindowsFormsApp1
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Display.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,6 +218,7 @@ namespace WindowsFormsApp1
         private FontAwesome.Sharp.IconButton btnHoaDon;
         private FontAwesome.Sharp.IconButton btnSach;
         private System.Windows.Forms.Panel Display;
+        private System.Windows.Forms.PictureBox pictureImage;
     }
 }
 

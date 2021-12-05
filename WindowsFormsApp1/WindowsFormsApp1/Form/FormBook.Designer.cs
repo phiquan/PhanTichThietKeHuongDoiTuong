@@ -29,33 +29,37 @@ namespace WindowsFormsApp1.FormDisplayManager
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridViewBook = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBook)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // dataGridViewBook
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(343, 214);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.dataGridViewBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBook.Location = new System.Drawing.Point(12, 164);
+            this.dataGridViewBook.Name = "dataGridViewBook";
+            this.dataGridViewBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewBook.Size = new System.Drawing.Size(761, 362);
+            this.dataGridViewBook.TabIndex = 0;
             // 
             // FormBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.ClientSize = new System.Drawing.Size(785, 538);
+            this.Controls.Add(this.dataGridViewBook);
             this.Name = "FormBook";
             this.Text = "FormBook";
+            this.Load += new System.EventHandler(this.FormBook_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBook)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridViewBook;
     }
 }

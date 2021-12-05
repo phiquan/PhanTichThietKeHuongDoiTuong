@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new Size(7, 60);
+            leftBorderBtn.Size = new Size(10, 60);
             panelMenu.Controls.Add(leftBorderBtn);
 
         
