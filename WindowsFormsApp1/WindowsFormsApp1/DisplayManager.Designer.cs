@@ -198,6 +198,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.Display);
             this.Controls.Add(this.panelMenu);
             this.Name = "DisplayManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

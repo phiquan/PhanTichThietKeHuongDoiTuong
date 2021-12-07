@@ -21,9 +21,26 @@ namespace WindowsFormsApp1.DAO
 
         public object selectBook()
         {
-            string query = "select Sach.IDSach as 'ID', Sach.TenSach as N'Tên Sách', Sach.NXB, Sach.TenTacGia as N'Tên Tác Giả', Sach.SoLuong as N'Số Lượng' from Sach";
+            string query = "select Sach.IDSach as 'ID', Sach.TenSach , Sach.NXB, Sach.TenTacGia as N'Tên Tác Giả', Sach.SoLuong as N'Số Lượng' from Sach";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+        public void add(string tenSach, string tenTacGia, string NXB, int soLuong)
+        {
+            string query = "insert into Sach values(N'" + tenSach + "',N'" + NXB + "',N'" + tenTacGia + "'," + soLuong + ")";
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
+
+        public void delete(int id)
+        {
+            string query = "delete from Sach where IDSach=" + id;
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
+        
+        public void update(string tenSach, string tenTacGia, string NXB, int soLuong,int id)
+        {
+            string query = " update Sach set TenSach=N'" + tenSach + "', NXB=N'" + NXB + "', TenTacGia=N'" + tenTacGia + "', SoLuong=" + soLuong + " where IDSach=" + id;
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
     }
 }
