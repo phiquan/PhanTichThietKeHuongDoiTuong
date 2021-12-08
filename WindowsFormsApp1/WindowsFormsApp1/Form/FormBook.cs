@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.FormDisplayManager
         private int id;
         public string tenSach, tenTacGia, NXB;
         public int soLuong;
-
+        public int gia;
         private void FormBook_Load(object sender, EventArgs e)
         {
             dataGridViewBook.DataSource = BookDAO.Instance.selectBook();
@@ -46,6 +46,7 @@ namespace WindowsFormsApp1.FormDisplayManager
                     NXB = row.Cells[2].Value.ToString();
                     tenTacGia = row.Cells[3].Value.ToString();                    
                     soLuong = int.Parse(row.Cells[4].Value.ToString());
+                    gia = int.Parse(row.Cells[5].Value.ToString());
                     btnDelete.Enabled = true;
                     btnUpdate.Enabled = true;
                 }
@@ -90,6 +91,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             sua.NXB = NXB;
             sua.SL = soLuong;
             sua.id = id;
+            sua.Gia = gia;
             sua.ShowDialog();
             dataGridViewBook.DataSource = BookDAO.Instance.selectBook();
             dataGridViewBook.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

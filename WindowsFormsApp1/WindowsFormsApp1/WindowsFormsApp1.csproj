@@ -69,6 +69,12 @@
     <Compile Include="DisplayManager.Designer.cs">
       <DependentUpon>DisplayManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="DisplayStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisplayStaff.Designer.cs">
+      <DependentUpon>DisplayStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DisplayManager.resx">
       <DependentUpon>DisplayManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisplayStaff.resx">
+      <DependentUpon>DisplayStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormAccount.resx">
       <DependentUpon>FormAccount.cs</DependentUpon>

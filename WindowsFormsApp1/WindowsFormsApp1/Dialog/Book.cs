@@ -14,9 +14,19 @@ namespace WindowsFormsApp1.Dialog
     public partial class Book : Form
     {
         public string tenSach,tenTacGia,NXB;
-        public int SL,id;
+        public int SL,id,Gia;
         public int check; //nếu = 1 là sửa; = 2 là thêm
-        
+
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.Handled)
+            {
+                MessageBox.Show("Bạn phải nhâp số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         public Book()
         {
             InitializeComponent();
@@ -27,9 +37,9 @@ namespace WindowsFormsApp1.Dialog
         {
             if(check == 2)
             {
-                if (txtTenSach.Text != "" && txtTacGia.Text != "" && txtNXB.Text != "" && txtSL.Text != "")
+                if (txtTenSach.Text != "" && txtTacGia.Text != "" && txtNXB.Text != "" && txtSL.Text != "" && txtMoney.Text != "")
                 {
-                    BookDAO.Instance.add(txtTenSach.Text, txtTacGia.Text, txtNXB.Text, int.Parse(txtSL.Text));
+                    BookDAO.Instance.add(txtTenSach.Text, txtTacGia.Text, txtNXB.Text, int.Parse(txtSL.Text), int.Parse(txtMoney.Text));
                     this.Hide();
                 }
                 else
@@ -41,7 +51,7 @@ namespace WindowsFormsApp1.Dialog
             {
                 if (txtTenSach.Text != "" && txtTacGia.Text != "" && txtNXB.Text != "" && txtSL.Text != "")
                 {
-                    BookDAO.Instance.update(txtTenSach.Text, txtTacGia.Text, txtNXB.Text, int.Parse(txtSL.Text),id);
+                    BookDAO.Instance.update(txtTenSach.Text, txtTacGia.Text, txtNXB.Text, int.Parse(txtSL.Text),id, int.Parse(txtMoney.Text));
                     this.Hide();
                 }
                 else
@@ -77,6 +87,7 @@ namespace WindowsFormsApp1.Dialog
             txtTacGia.Text = tenTacGia;
             txtTenSach.Text = tenSach;
             txtNXB.Text = NXB;
+            txtMoney.Text = Gia.ToString();
             txtSL.Text = SL.ToString();
        
         }

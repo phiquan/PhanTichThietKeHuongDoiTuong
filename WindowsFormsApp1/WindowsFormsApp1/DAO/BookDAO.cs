@@ -21,13 +21,13 @@ namespace WindowsFormsApp1.DAO
 
         public object selectBook()
         {
-            string query = "select Sach.IDSach as 'ID', Sach.TenSach , Sach.NXB, Sach.TenTacGia as N'Tên Tác Giả', Sach.SoLuong as N'Số Lượng' from Sach";
+            string query = "select Sach.IDSach as 'ID', Sach.TenSach , Sach.NXB, Sach.TenTacGia as N'Tên Tác Giả', Sach.SoLuong as N'Số Lượng', Sach.Gia from Sach";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
-        public void add(string tenSach, string tenTacGia, string NXB, int soLuong)
+        public void add(string tenSach, string tenTacGia, string NXB, int soLuong,int Gia)
         {
-            string query = "insert into Sach values(N'" + tenSach + "',N'" + NXB + "',N'" + tenTacGia + "'," + soLuong + ")";
+            string query = "insert into Sach values(N'" + tenSach + "',N'" + NXB + "',N'" + tenTacGia + "'," + Gia + "," + soLuong + ")";
             DataProvider.Instance.ExucuteNonQuery(query);
         }
 
@@ -37,9 +37,9 @@ namespace WindowsFormsApp1.DAO
             DataProvider.Instance.ExucuteNonQuery(query);
         }
         
-        public void update(string tenSach, string tenTacGia, string NXB, int soLuong,int id)
+        public void update(string tenSach, string tenTacGia, string NXB, int soLuong,int id,int Gia)
         {
-            string query = " update Sach set TenSach=N'" + tenSach + "', NXB=N'" + NXB + "', TenTacGia=N'" + tenTacGia + "', SoLuong=" + soLuong + " where IDSach=" + id;
+            string query = " update Sach set TenSach=N'" + tenSach + "', NXB=N'" + NXB + "', TenTacGia=N'" + tenTacGia + "', SoLuong=" + soLuong + ", Gia=" + Gia + " where IDSach=" + id;
             DataProvider.Instance.ExucuteNonQuery(query);
         }
     }

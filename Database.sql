@@ -30,6 +30,8 @@ create table KhachHang
 	SDT int,
 	Email nvarchar(50),
 	NgaySinh date,
+	SoTienDaMua money,
+	CapBac int,
 	GioiTinh bit,
 )
 
@@ -49,6 +51,7 @@ create table Sach
 	TenSach nvarchar(50) NOT NULL,
 	NXB nvarchar(50) NOT NULL,
 	TenTacGia nvarchar(50) NOT NULL,
+	Gia float(2),
 	SoLuong int NOT NULL,
 )
 
@@ -61,7 +64,7 @@ create table ChiTietHoaDon
 	FOREIGN KEY (IDHoaDon) REFERENCES HoaDon(IDHoaDon),
 	FOREIGN KEY (IDSach) REFERENCES Sach(IDSach),
 )
-
+insert into Sach values(N'123ã123456','cx@com',N'lakjnv',12000,15)
 --Dữ liệu bảng Phân Quyền
 insert into PhanQuyen values(N'Quản Lý')
 insert into PhanQuyen values(N'Nhân Viên')
@@ -72,7 +75,7 @@ insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,ID) values(N'Ivantim','123456','i
 insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,ID) values(N'TuBeo','123456','tubeo@gmail.com',2)
 
 --Dữ liệu bảng Khách Hàng
-insert into KhachHang(TenKhachHang,SDT,Email) values(N'Phi Quân','0123456789','phiquan@gmail.com')
+insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Phi Quân','0123456789','phiquan@gmail.com',150000)
 insert into KhachHang(TenKhachHang,SDT,Email) values(N'Sỹ Khá','0123456987','sykha@gmail.com')
 
  delete from TaiKhoan where IDTaiKhoan=2

@@ -39,6 +39,8 @@ namespace WindowsFormsApp1.Dialog
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMoney = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lableBook
@@ -127,7 +129,7 @@ namespace WindowsFormsApp1.Dialog
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnThem.Location = new System.Drawing.Point(124, 381);
+            this.btnThem.Location = new System.Drawing.Point(125, 465);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(104, 46);
             this.btnThem.TabIndex = 9;
@@ -135,11 +137,32 @@ namespace WindowsFormsApp1.Dialog
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 386);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Giá Tiền";
+            // 
+            // txtMoney
+            // 
+            this.txtMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoney.Location = new System.Drawing.Point(16, 409);
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.Size = new System.Drawing.Size(332, 26);
+            this.txtMoney.TabIndex = 11;
+            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
+            // 
             // Book
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 450);
+            this.ClientSize = new System.Drawing.Size(360, 531);
+            this.Controls.Add(this.txtMoney);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -171,5 +194,7 @@ namespace WindowsFormsApp1.Dialog
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMoney;
     }
 }
