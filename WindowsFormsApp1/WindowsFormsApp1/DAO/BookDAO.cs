@@ -25,6 +25,7 @@ namespace WindowsFormsApp1.DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+
         public void add(string tenSach, string tenTacGia, string NXB, int soLuong,int Gia)
         {
             string query = "insert into Sach values(N'" + tenSach + "',N'" + NXB + "',N'" + tenTacGia + "'," + Gia + "," + soLuong + ")";

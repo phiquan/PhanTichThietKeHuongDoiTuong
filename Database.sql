@@ -30,11 +30,11 @@ create table KhachHang
 	SDT int,
 	Email nvarchar(50),
 	NgaySinh date,
-	SoTienDaMua money,
-	CapBac int,
+	SoTienDaMua int,
+	CapBac nvarchar(50),
 	GioiTinh bit,
 )
-
+drop table KhachHang
 
 create table HoaDon
 (
@@ -68,14 +68,14 @@ insert into Sach values(N'123ã123456','cx@com',N'lakjnv',12000,15)
 --Dữ liệu bảng Phân Quyền
 insert into PhanQuyen values(N'Quản Lý')
 insert into PhanQuyen values(N'Nhân Viên')
-
+select * from KhachHang
 --Dữ liệu bảng Tài Khoản
 insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,ID) values(N'TuanUra','123456','nat@gmail.com',1)
 insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,ID) values(N'Ivantim','123456','ivamtim@gmail.com',2)
 insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,ID) values(N'TuBeo','123456','tubeo@gmail.com',2)
-
+update TaiKhoan set SDT=012356 where IDTaiKhoan=4
 --Dữ liệu bảng Khách Hàng
 insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Phi Quân','0123456789','phiquan@gmail.com',150000)
-insert into KhachHang(TenKhachHang,SDT,Email) values(N'Sỹ Khá','0123456987','sykha@gmail.com')
+insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0123456987','sykha@gmail.com',1000000)
 
  delete from TaiKhoan where IDTaiKhoan=2

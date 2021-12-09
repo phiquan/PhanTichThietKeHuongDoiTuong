@@ -23,5 +23,7 @@ namespace WindowsFormsApp1.DAO
             string query = "";
             return DataProvider.Instance.ExecuteQuery(query);
         }
+
+
     }
 }

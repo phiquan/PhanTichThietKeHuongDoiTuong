@@ -88,6 +88,7 @@ namespace WindowsFormsApp1
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            OpenChildForm(new FormCreateBill());
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)

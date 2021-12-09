@@ -31,12 +31,12 @@ namespace WindowsFormsApp1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayStaff));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new FontAwesome.Sharp.IconButton();
+            this.btnKhachHang = new FontAwesome.Sharp.IconButton();
+            this.btnHoaDon = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureImage = new System.Windows.Forms.PictureBox();
-            this.btnHoaDon = new FontAwesome.Sharp.IconButton();
-            this.btnKhachHang = new FontAwesome.Sharp.IconButton();
-            this.btnDangXuat = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -55,6 +55,54 @@ namespace WindowsFormsApp1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 577);
             this.panel1.TabIndex = 0;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDangXuat.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnDangXuat.IconColor = System.Drawing.Color.Black;
+            this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 222);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(200, 60);
+            this.btnDangXuat.TabIndex = 7;
+            this.btnDangXuat.Text = "ĐĂNG XUẤT";
+            this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // btnKhachHang
+            // 
+            this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhachHang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnKhachHang.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnKhachHang.IconColor = System.Drawing.Color.Black;
+            this.btnKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnKhachHang.Location = new System.Drawing.Point(0, 162);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(200, 60);
+            this.btnKhachHang.TabIndex = 4;
+            this.btnKhachHang.Text = "KHÁCH HÀNG";
+            this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // btnHoaDon
+            // 
+            this.btnHoaDon.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHoaDon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHoaDon.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnHoaDon.IconColor = System.Drawing.Color.Black;
+            this.btnHoaDon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHoaDon.Location = new System.Drawing.Point(0, 102);
+            this.btnHoaDon.Name = "btnHoaDon";
+            this.btnHoaDon.Size = new System.Drawing.Size(200, 60);
+            this.btnHoaDon.TabIndex = 3;
+            this.btnHoaDon.Text = "IN HÓA ĐƠN";
+            this.btnHoaDon.UseVisualStyleBackColor = true;
+            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
             // 
             // pictureBox1
             // 
@@ -87,54 +135,6 @@ namespace WindowsFormsApp1
             this.pictureImage.TabIndex = 1;
             this.pictureImage.TabStop = false;
             // 
-            // btnHoaDon
-            // 
-            this.btnHoaDon.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHoaDon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHoaDon.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnHoaDon.IconColor = System.Drawing.Color.Black;
-            this.btnHoaDon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHoaDon.Location = new System.Drawing.Point(0, 102);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(200, 60);
-            this.btnHoaDon.TabIndex = 3;
-            this.btnHoaDon.Text = "IN HÓA ĐƠN";
-            this.btnHoaDon.UseVisualStyleBackColor = true;
-            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
-            // 
-            // btnKhachHang
-            // 
-            this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKhachHang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnKhachHang.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnKhachHang.IconColor = System.Drawing.Color.Black;
-            this.btnKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 162);
-            this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(200, 60);
-            this.btnKhachHang.TabIndex = 4;
-            this.btnKhachHang.Text = "KHÁCH HÀNG";
-            this.btnKhachHang.UseVisualStyleBackColor = true;
-            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDangXuat.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnDangXuat.IconColor = System.Drawing.Color.Black;
-            this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 222);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(200, 60);
-            this.btnDangXuat.TabIndex = 7;
-            this.btnDangXuat.Text = "ĐĂNG XUẤT";
-            this.btnDangXuat.UseVisualStyleBackColor = true;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
             // DisplayStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +144,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DisplayStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DisplayStaff";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

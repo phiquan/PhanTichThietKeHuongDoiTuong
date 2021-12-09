@@ -21,16 +21,18 @@ namespace WindowsFormsApp1.DAO
 
         public bool LoginManager(string userName, string passWord)
         {
-            string query = "SELECT * FROM TaiKhoan WHERE Email='" + userName + "' AND MatKhau='" + passWord + "' AND ID=1";
+            string query = "SELECT * FROM TaiKhoan WHERE SDT=" + userName + " AND MatKhau='" + passWord + "' AND ID=1";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
 
         public bool LoginStaff(string userName, string passWord)
         {
-            string query = "SELECT * FROM TaiKhoan WHERE Email='" + userName + "' AND MatKhau='" + passWord + "' AND ID=2";
+            string query = "SELECT * FROM TaiKhoan WHERE SDT=" + userName + " AND MatKhau='" + passWord + "' AND ID=2";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
+
+       
     }
 }
