@@ -18,3 +18,4 @@ D:\PhanTichThietKeHuongDoiTuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Wind
 D:\PhanTichThietKeHuongDoiTuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormDisplayManager.FormLogout.resources
 D:\PhanTichThietKeHuongDoiTuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Dialog.Book.resources
 D:\PhanTichThietKeHuongDoiTuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DisplayStaff.resources
+D:\PhanTichThietKeHuongDoiTuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Dialog.Client.resources

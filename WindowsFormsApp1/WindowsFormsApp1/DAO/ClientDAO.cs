@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.DAO
 
         public object selectClient()
         {
-            string query = "select KhachHang.IDKhachHang as 'ID', KhachHang.TenKhachHang as N'Tên Khách Hàng', KhachHang.Email, KhachHang.SDT, KhachHang.NgaySinh as N'Ngày Sinh' from KhachHang";
+            string query = "select KhachHang.IDKhachHang as 'ID', KhachHang.TenKhachHang, KhachHang.Email, KhachHang.SDT, KhachHang.CapBac as N'Cấp Bậc', KhachHang.SoTienDaMua as N'Số Tiền Đã Mua' from KhachHang";
             return DataProvider.Instance.ExecuteQuery(query);
         }
     }
