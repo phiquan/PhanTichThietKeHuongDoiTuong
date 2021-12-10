@@ -17,6 +17,9 @@ namespace WindowsFormsApp1
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+
+        public int idStaff;
+        public string nameStaff;
         public DisplayStaff()
         {
             InitializeComponent();
@@ -88,7 +91,7 @@ namespace WindowsFormsApp1
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new FormCreateBill());
+            OpenChildForm(new FormCreateBill());          
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
@@ -101,6 +104,14 @@ namespace WindowsFormsApp1
         {
             ActivateButton(sender, RGBColors.color3);
             OpenChildForm(new FormLogout());
+            var mess = MessageBox.Show("Bạn có muốn đăng xuất", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (mess == DialogResult.Yes)
+            {
+                this.Hide();
+                LogIn login = new LogIn();
+                login.ShowDialog();
+            }
+            
         }
     }
 }

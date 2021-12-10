@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.FormDisplayManager;
 
 namespace WindowsFormsApp1
 {
@@ -34,7 +35,13 @@ namespace WindowsFormsApp1
                 {
                     this.Hide();
                     DisplayStaff staff = new DisplayStaff();
+                    staff.idStaff = getId(user);
+                    staff.nameStaff = getName(user);
                     staff.ShowDialog();
+
+                    FormCreateBill formCreateBill = new FormCreateBill();
+                    formCreateBill.idStaff = getId(user);
+
                 }
             }
             else
@@ -51,6 +58,16 @@ namespace WindowsFormsApp1
         bool LoginStaff(string user, string pass)
         {
             return LoginDAO.Instance.LoginStaff(user, pass);
+        }
+
+        string getName(string phone)
+        {
+            return LoginDAO.Instance.getName(phone);
+        }
+
+        int getId(string phone)
+        {
+            return LoginDAO.Instance.getId(phone);
         }
     }
 }

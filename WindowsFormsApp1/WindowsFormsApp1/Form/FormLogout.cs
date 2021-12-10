@@ -12,9 +12,12 @@ namespace WindowsFormsApp1.FormDisplayManager
 {
     public partial class FormLogout : Form
     {
+        public string name;
         public FormLogout()
         {
             InitializeComponent();
+            Console.WriteLine(name);
         }
+        
     }
 }

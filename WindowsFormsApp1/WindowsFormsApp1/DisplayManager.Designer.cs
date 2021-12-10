@@ -197,6 +197,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(1001, 577);
             this.Controls.Add(this.Display);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DisplayManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

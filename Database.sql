@@ -44,6 +44,7 @@ create table HoaDon
 	IDTaiKhoan int,
 	FOREIGN KEY (IDTaiKhoan) REFERENCES TaiKhoan(IDTaiKhoan),
 )
+Insert into HoaDon(NgayInHoaDon,GioInHoaDon,IDTaiKhoan) values('2021/12/10','21:22:00',3)
 
 create table Sach
 (
@@ -79,3 +80,8 @@ insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Phi Quân','0
 insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0123456987','sykha@gmail.com',1000000)
 
  delete from TaiKhoan where IDTaiKhoan=2
+ SELECT IDTaiKhoan FROM TaiKhoan WHERE SDT=1235
+
+ select Top(1) IDHoaDon
+ from HoaDon
+ order by IDHoaDon DESC

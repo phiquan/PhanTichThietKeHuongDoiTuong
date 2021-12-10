@@ -124,6 +124,13 @@ namespace WindowsFormsApp1
         {
             ActivateButton(sender, RGBColors.color6);
             OpenChildForm(new FormLogout());
+            var mess = MessageBox.Show("Bạn có muốn đăng xuất", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (mess == DialogResult.Yes)
+            {
+                this.Hide();
+                LogIn login = new LogIn();
+                login.ShowDialog();
+            }
         }
 
         

@@ -13,9 +13,16 @@ namespace WindowsFormsApp1
 {
     public partial class FormCreateBill : Form
     {
+        public int idStaff;
         public FormCreateBill()
         {
             InitializeComponent();
+            txtSoHoaDon.Text = "";
+            txtSoTienTra.Text = "";
+            btnThem.Enabled = false;
+            btnXoa.Enabled = false;
+            btnInBill.Enabled = false;
+            
         }
 
         private void FormCreateBill_Load(object sender, EventArgs e)
@@ -29,14 +36,7 @@ namespace WindowsFormsApp1
             cbbKhach.DisplayMember = "TenKhachHang";
             cbbKhach.ValueMember = "CapBac";
 
-            if (cbbKhach.SelectedValue.ToString() == "Dong")
-            {
-                txtGiamGia.Text = "5%";
-            }
-            else if (cbbKhach.SelectedValue.ToString() == "Bac")
-            {
-                txtGiamGia.Text = "10%";
-            }
+            cbbKhach.Text = "Không Có";
 
         }
 
@@ -62,8 +62,41 @@ namespace WindowsFormsApp1
             }else if(cbbKhach.SelectedValue.ToString() == "Bac")
             {
                 txtGiamGia.Text = "10%";
+            }else if(cbbKhach.SelectedValue.ToString() == "Vang")
+            {
+                txtGiamGia.Text = "15%";
+            }else if(cbbKhach.SelectedValue.ToString() == "Kim Cuong")
+            {
+                txtGiamGia.Text = "25%";
             }
           
+        }
+
+        private void txtSoHoaDon_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSoHoaDon.Text != "")
+            {
+                btnThem.Enabled = true;
+                btnXoa.Enabled = true;
+            }
+        }
+
+        private void txtSoTienTra_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSoHoaDon.Text != "")
+            {
+                btnInBill.Enabled = true;
+            }
+        }
+
+        private void btnTaoHoaDon_Click(object sender, EventArgs e)
+        {
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            string date = DateTime.Now.ToString("yyyy/MM/dd");
+            CreateBillDAO.Instance.createBill(date, time, idStaff);
+            txtSoHoaDon.Text = CreateBillDAO.Instance.getIdBill().ToString();
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
         }
     }
 }

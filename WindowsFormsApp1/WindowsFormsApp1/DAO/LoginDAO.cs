@@ -33,6 +33,22 @@ namespace WindowsFormsApp1.DAO
             return result.Rows.Count > 0;
         }
 
-       
+        public string getName(string phone)
+        {
+            string query = "SELECT TenTaiKhoan FROM TaiKhoan WHERE SDT=" + phone ;
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            string fullname = result.Rows[0].ItemArray[0].ToString();
+            return fullname;
+        }
+
+        public int getId(string phone)
+        {
+            string query = "SELECT IDTaiKhoan FROM TaiKhoan WHERE SDT=" + phone;
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
+            return id;
+        }
+
+
     }
 }
