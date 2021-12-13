@@ -41,14 +41,22 @@ namespace WindowsFormsApp1.DAO
             return fullname;
         }
 
-        public int getId(string phone)
+        public int getId()
         {
-            string query = "SELECT IDTaiKhoan FROM TaiKhoan WHERE SDT=" + phone;
+            string query = "SELECT IDStaff FROM LuuID";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
             return id;
         }
 
+        public void SaveId(string phone)
+        {
+            string query = "SELECT IDTaiKhoan FROM TaiKhoan WHERE SDT=" + phone;
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
 
+            string querySaveId = "update LuuID set IDStaff=" + id + " where IDChiTietHoaDon=1";
+            DataProvider.Instance.ExucuteNonQuery(querySaveId);
+        }
     }
 }

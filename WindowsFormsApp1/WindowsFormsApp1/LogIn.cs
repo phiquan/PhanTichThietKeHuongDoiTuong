@@ -33,14 +33,11 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
+                    LoginDAO.Instance.SaveId(user);
                     this.Hide();
                     DisplayStaff staff = new DisplayStaff();
-                    staff.idStaff = getId(user);
                     staff.nameStaff = getName(user);
                     staff.ShowDialog();
-
-                    FormCreateBill formCreateBill = new FormCreateBill();
-                    formCreateBill.idStaff = getId(user);
 
                 }
             }
@@ -65,9 +62,5 @@ namespace WindowsFormsApp1
             return LoginDAO.Instance.getName(phone);
         }
 
-        int getId(string phone)
-        {
-            return LoginDAO.Instance.getId(phone);
-        }
     }
 }

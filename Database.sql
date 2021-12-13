@@ -65,6 +65,13 @@ create table ChiTietHoaDon
 	FOREIGN KEY (IDHoaDon) REFERENCES HoaDon(IDHoaDon),
 	FOREIGN KEY (IDSach) REFERENCES Sach(IDSach),
 )
+
+create table LuuID
+(
+	IDChiTietHoaDon int IDENTITY(1,1) PRIMARY KEY,
+	IDStaff int,
+)
+insert into LuuID values(1)
 insert into Sach values(N'123ã123456','cx@com',N'lakjnv',12000,15)
 --Dữ liệu bảng Phân Quyền
 insert into PhanQuyen values(N'Quản Lý')
@@ -85,3 +92,10 @@ insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0
  select Top(1) IDHoaDon
  from HoaDon
  order by IDHoaDon DESC
+
+ select ChiTietHoaDon.IDChiTietHoaDon as 'ID', Sach.TenSach as N'Tên Sách', ChiTietHoaDon.SoLuong as N'Số Lượng'
+ from ChiTietHoaDon, Sach, HoaDon
+ where HoaDon.IDHoaDon = ChiTietHoaDon.IDHoaDon and ChiTietHoaDon.IDSach = Sach.IDSach and ChiTietHoaDon.IDHoaDon = 13
+
+ insert into ChiTietHoaDon(IDSach,IDHoaDon,SoLuong) values(,,1)
+ delete from ChiTietHoaDon where IDChiTietHoaDon=2

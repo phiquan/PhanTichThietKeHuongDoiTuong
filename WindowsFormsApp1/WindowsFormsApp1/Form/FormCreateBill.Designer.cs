@@ -60,14 +60,18 @@ namespace WindowsFormsApp1
             this.dataGridViewBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBook.Size = new System.Drawing.Size(313, 317);
             this.dataGridViewBook.TabIndex = 0;
+            this.dataGridViewBook.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBook_CellClick);
             // 
             // dataGridViewInfoBill
             // 
+            this.dataGridViewInfoBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewInfoBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInfoBill.Location = new System.Drawing.Point(460, 86);
             this.dataGridViewInfoBill.Name = "dataGridViewInfoBill";
+            this.dataGridViewInfoBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewInfoBill.Size = new System.Drawing.Size(313, 317);
             this.dataGridViewInfoBill.TabIndex = 1;
+            this.dataGridViewInfoBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInfoBill_CellClick);
             // 
             // btnThem
             // 
@@ -78,6 +82,7 @@ namespace WindowsFormsApp1
             this.btnThem.TabIndex = 2;
             this.btnThem.Text = "THÊM";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -88,6 +93,7 @@ namespace WindowsFormsApp1
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "XÓA";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // cbbKhach
             // 

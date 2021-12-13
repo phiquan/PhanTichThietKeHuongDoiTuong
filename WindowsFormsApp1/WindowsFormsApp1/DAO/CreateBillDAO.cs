@@ -44,5 +44,23 @@ namespace WindowsFormsApp1.DAO
             int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
             return id;
         }
+
+        public object selectInfoBill(int idBill)
+        {
+            string query = " select ChiTietHoaDon.IDChiTietHoaDon as 'ID', Sach.TenSach as N'Tên Sách', ChiTietHoaDon.SoLuong as N'Số Lượng' from ChiTietHoaDon, Sach, HoaDon where HoaDon.IDHoaDon = ChiTietHoaDon.IDHoaDon and ChiTietHoaDon.IDSach = Sach.IDSach and ChiTietHoaDon.IDHoaDon = " + idBill;
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+
+        public void addBook(int bill, int idBook)
+        {
+            string query = "insert into ChiTietHoaDon(IDSach,IDHoaDon,SoLuong) values(" + idBook + "," + bill + ",1)";
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
+
+        public void deleteBook(int idInfoBill)
+        {
+            string query = "delete from ChiTietHoaDon where IDChiTietHoaDon=" + idInfoBill;
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
     }
 }

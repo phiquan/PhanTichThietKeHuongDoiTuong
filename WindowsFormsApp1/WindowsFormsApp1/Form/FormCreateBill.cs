@@ -13,7 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class FormCreateBill : Form
     {
-        public int idStaff;
+        private int idBook;
+        private int idInfoBill;
         public FormCreateBill()
         {
             InitializeComponent();
@@ -93,10 +94,68 @@ namespace WindowsFormsApp1
         {
             string time = DateTime.Now.ToString("HH:mm:ss");
             string date = DateTime.Now.ToString("yyyy/MM/dd");
-            CreateBillDAO.Instance.createBill(date, time, idStaff);
+            CreateBillDAO.Instance.createBill(date, time, LoginDAO.Instance.getId());
             txtSoHoaDon.Text = CreateBillDAO.Instance.getIdBill().ToString();
-            btnThem.Enabled = true;
-            btnXoa.Enabled = true;
+            btnTaoHoaDon.Enabled = false;
+
+            dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
+            dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.ClearSelection();
+        }
+
+        private void dataGridViewBook_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridViewBook.Rows[e.RowIndex];
+                    idBook = int.Parse(row.Cells[0].Value.ToString());
+                    btnThem.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            CreateBillDAO.Instance.addBook(int.Parse(txtSoHoaDon.Text), idBook);
+            btnThem.Enabled = false;
+            dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
+            dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.ClearSelection();
+        }
+
+        private void dataGridViewInfoBill_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridViewBook.Rows[e.RowIndex];
+                    idInfoBill = int.Parse(row.Cells[0].Value.ToString());
+                    btnXoa.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            CreateBillDAO.Instance.deleteBook(idInfoBill);
+            btnXoa.Enabled = false;
+            dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
+            dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.ClearSelection();
         }
     }
 }
