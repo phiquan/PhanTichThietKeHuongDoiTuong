@@ -122,6 +122,7 @@ namespace WindowsFormsApp1
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(216, 26);
             this.txtSoTien.TabIndex = 6;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
             // 
             // label1
             // 

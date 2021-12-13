@@ -47,7 +47,7 @@ namespace WindowsFormsApp1.DAO
 
         public object selectInfoBill(int idBill)
         {
-            string query = " select ChiTietHoaDon.IDChiTietHoaDon as 'ID', Sach.TenSach as N'Tên Sách', ChiTietHoaDon.SoLuong as N'Số Lượng' from ChiTietHoaDon, Sach, HoaDon where HoaDon.IDHoaDon = ChiTietHoaDon.IDHoaDon and ChiTietHoaDon.IDSach = Sach.IDSach and ChiTietHoaDon.IDHoaDon = " + idBill;
+            string query = " select Sach.TenSach as N'Tên Sách', SUM(ChiTietHoaDon.SoLuong) as N'Số Lượng' from ChiTietHoaDon, Sach, HoaDon where HoaDon.IDHoaDon = ChiTietHoaDon.IDHoaDon and ChiTietHoaDon.IDSach = Sach.IDSach and ChiTietHoaDon.IDHoaDon = " + idBill + "Group by Sach.TenSach";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
@@ -57,10 +57,30 @@ namespace WindowsFormsApp1.DAO
             DataProvider.Instance.ExucuteNonQuery(query);
         }
 
-        public void deleteBook(int idInfoBill)
+        public void deleteBook(int idBill, string Book)
         {
-            string query = "delete from ChiTietHoaDon where IDChiTietHoaDon=" + idInfoBill;
+            string selectId = "select IDSach from Sach where Sach.TenSach = N'" + Book + "'";
+            DataTable result = DataProvider.Instance.ExecuteQuery(selectId);
+            int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
+
+            string query = "delete from ChiTietHoaDon where IDHoaDon=" + idBill + " and IDSach=" + id;
             DataProvider.Instance.ExucuteNonQuery(query);
+        }
+
+        public int getMoney(int idBill)
+        {
+            string query = " select SUM(Sach.Gia) from Sach, ChiTietHoaDon where ChiTietHoaDon.IDHoaDon = " + idBill + " and ChiTietHoaDon.IDSach = Sach.IDSach and Sach.Gia > 0";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            int money;
+            try
+            {
+                money = int.Parse(result.Rows[0].ItemArray[0].ToString());
+            }
+            catch (Exception)
+            {
+                money = 0;
+            }          
+            return money;
         }
     }
 }

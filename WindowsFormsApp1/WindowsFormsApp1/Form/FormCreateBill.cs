@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     public partial class FormCreateBill : Form
     {
         private int idBook;
-        private int idInfoBill;
+        private string book;
         public FormCreateBill()
         {
             InitializeComponent();
@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
 
             dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
             dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.Columns[1].Width = 70;
             dataGridViewInfoBill.ClearSelection();
         }
 
@@ -112,7 +112,10 @@ namespace WindowsFormsApp1
                 {
                     DataGridViewRow row = this.dataGridViewBook.Rows[e.RowIndex];
                     idBook = int.Parse(row.Cells[0].Value.ToString());
-                    btnThem.Enabled = true;
+                    if(txtSoHoaDon.Text != "")
+                    {
+                        btnThem.Enabled = true;
+                    }
                 }
             }
             catch (Exception)
@@ -127,8 +130,9 @@ namespace WindowsFormsApp1
             btnThem.Enabled = false;
             dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
             dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.Columns[1].Width = 70;
             dataGridViewInfoBill.ClearSelection();
+            txtSoTien.Text = CreateBillDAO.Instance.getMoney(int.Parse(txtSoHoaDon.Text)).ToString();
         }
 
         private void dataGridViewInfoBill_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -137,8 +141,8 @@ namespace WindowsFormsApp1
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow row = this.dataGridViewBook.Rows[e.RowIndex];
-                    idInfoBill = int.Parse(row.Cells[0].Value.ToString());
+                    DataGridViewRow row = this.dataGridViewInfoBill.Rows[e.RowIndex];
+                    book = row.Cells[0].Value.ToString();
                     btnXoa.Enabled = true;
                 }
             }
@@ -150,12 +154,34 @@ namespace WindowsFormsApp1
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            CreateBillDAO.Instance.deleteBook(idInfoBill);
+            CreateBillDAO.Instance.deleteBook(int.Parse(txtSoHoaDon.Text), book);
             btnXoa.Enabled = false;
             dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(int.Parse(txtSoHoaDon.Text));
             dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewInfoBill.Columns[0].Width = 20;
+            dataGridViewInfoBill.Columns[1].Width = 70;
             dataGridViewInfoBill.ClearSelection();
+            txtSoTien.Text = CreateBillDAO.Instance.getMoney(int.Parse(txtSoHoaDon.Text)).ToString();
+        }
+
+        private void txtSoTien_TextChanged(object sender, EventArgs e)
+        {
+            if (cbbKhach.SelectedValue.ToString() == "Dong")
+            {
+                txtSoTienTra.Text = txtSoTien.Text; ;
+            }
+            else if (cbbKhach.SelectedValue.ToString() == "Bac")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 90 / 100).ToString();
+            }
+            else if (cbbKhach.SelectedValue.ToString() == "Vang")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 85 / 100).ToString();
+            }
+            else if (cbbKhach.SelectedValue.ToString() == "Kim Cuong")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 75 / 100).ToString();
+            }
+           
         }
     }
 }
