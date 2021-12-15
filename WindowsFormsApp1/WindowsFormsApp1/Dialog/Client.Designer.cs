@@ -96,6 +96,7 @@ namespace WindowsFormsApp1.Dialog
             this.txtMoney.ReadOnly = true;
             this.txtMoney.Size = new System.Drawing.Size(223, 26);
             this.txtMoney.TabIndex = 5;
+            this.txtMoney.Text = "0";
             // 
             // label1
             // 

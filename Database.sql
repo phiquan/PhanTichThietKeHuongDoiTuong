@@ -34,15 +34,19 @@ create table KhachHang
 	CapBac nvarchar(50),
 	GioiTinh bit,
 )
-drop table KhachHang
+drop table ChiTietHoaDon
+drop table HoaDon
 
 create table HoaDon
 (
 	IDHoaDon int IDENTITY(1,1) PRIMARY KEY,
 	NgayInHoaDon date,
 	GioInHoaDon time,
+	TongTien int,
 	IDTaiKhoan int,
+	IDKhachHang int,
 	FOREIGN KEY (IDTaiKhoan) REFERENCES TaiKhoan(IDTaiKhoan),
+	FOREIGN KEY (IDKhachHang) REFERENCES KhachHang(IDKhachHang),
 )
 Insert into HoaDon(NgayInHoaDon,GioInHoaDon,IDTaiKhoan) values('2021/12/10','21:22:00',3)
 
@@ -99,3 +103,19 @@ insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0
 
  insert into ChiTietHoaDon(IDSach,IDHoaDon,SoLuong) values(,,1)
  delete from ChiTietHoaDon where IDChiTietHoaDon=2
+
+ update HoaDon set TongTien=123 where IDHoaDon=12
+ update HoaDon set TongTien=123, IDKhachHang=1 where IDHoaDon=12
+
+ select CapBac
+ from KhachHang
+ where TenKhachHang=N'Sỹ Khá'
+
+ select Sum(TongTien)
+ from HoaDon
+ where IDKhachHang=1 and TongTien > 0
+
+ update KhachHang set CapBac='' where IDKhachHang=
+
+ update KhachHang set SoTienDaMua=SoTienDaMua + 12 where IDKhachHang=
+ update KhachHang set CapBac='Bac' where IDKhachHang=1

@@ -59,16 +59,16 @@ namespace WindowsFormsApp1
         {
             if(cbbKhach.SelectedValue.ToString() == "Dong")
             {
-                txtGiamGia.Text = "5%";
+                txtGiamGia.Text = "";
             }else if(cbbKhach.SelectedValue.ToString() == "Bac")
             {
-                txtGiamGia.Text = "10%";
+                txtGiamGia.Text = "5%";
             }else if(cbbKhach.SelectedValue.ToString() == "Vang")
             {
-                txtGiamGia.Text = "15%";
+                txtGiamGia.Text = "10%";
             }else if(cbbKhach.SelectedValue.ToString() == "Kim Cuong")
             {
-                txtGiamGia.Text = "25%";
+                txtGiamGia.Text = "15%";
             }
           
         }
@@ -165,23 +165,59 @@ namespace WindowsFormsApp1
 
         private void txtSoTien_TextChanged(object sender, EventArgs e)
         {
-            if (cbbKhach.SelectedValue.ToString() == "Dong")
+            if (txtGiamGia.Text == "")
             {
                 txtSoTienTra.Text = txtSoTien.Text; ;
             }
-            else if (cbbKhach.SelectedValue.ToString() == "Bac")
+            else if (txtGiamGia.Text == "5%")
             {
                 txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 90 / 100).ToString();
             }
-            else if (cbbKhach.SelectedValue.ToString() == "Vang")
+            else if (txtGiamGia.Text == "10%")
             {
                 txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 85 / 100).ToString();
             }
-            else if (cbbKhach.SelectedValue.ToString() == "Kim Cuong")
+            else if (txtGiamGia.Text == "15%")
             {
                 txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 75 / 100).ToString();
             }
            
+        }
+
+        private void txtGiamGia_TextChanged(object sender, EventArgs e)
+        {
+            if (txtGiamGia.Text == "")
+            {
+                txtSoTienTra.Text = txtSoTien.Text; ;
+            }
+            else if (txtGiamGia.Text == "5%")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 90 / 100).ToString();
+            }
+            else if (txtGiamGia.Text == "10%")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 85 / 100).ToString();
+            }
+            else if (txtGiamGia.Text == "15%")
+            {
+                txtSoTienTra.Text = (int.Parse(txtSoTien.Text) * 75 / 100).ToString();
+            }
+        }
+
+        private void btnInBill_Click(object sender, EventArgs e)
+        {
+            CreateBillDAO.Instance.updateBill(cbbKhach.Text, int.Parse(txtSoHoaDon.Text), int.Parse(txtSoTienTra.Text));
+            
+            cbbKhach.Text = "Không Có";
+            btnInBill.Enabled = false;
+            btnThem.Enabled = false;
+            btnXoa.Enabled = false;
+            btnTaoHoaDon.Enabled = true;
+            txtSoHoaDon.Text = "";
+            txtGiamGia.Text = "";
+            txtSoTien.Text = "";
+            txtSoTienTra.Text = "";
+            dataGridViewInfoBill.Refresh();
         }
     }
 }

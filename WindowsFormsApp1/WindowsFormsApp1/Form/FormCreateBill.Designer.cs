@@ -113,6 +113,7 @@ namespace WindowsFormsApp1
             this.txtGiamGia.ReadOnly = true;
             this.txtGiamGia.Size = new System.Drawing.Size(216, 26);
             this.txtGiamGia.TabIndex = 5;
+            this.txtGiamGia.TextChanged += new System.EventHandler(this.txtGiamGia_TextChanged);
             // 
             // txtSoTien
             // 
@@ -187,6 +188,7 @@ namespace WindowsFormsApp1
             this.btnInBill.TabIndex = 12;
             this.btnInBill.Text = "IN BILL";
             this.btnInBill.UseVisualStyleBackColor = true;
+            this.btnInBill.Click += new System.EventHandler(this.btnInBill_Click);
             // 
             // txtTenSach
             // 

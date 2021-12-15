@@ -82,5 +82,57 @@ namespace WindowsFormsApp1.DAO
             }          
             return money;
         }
+
+        public void updateBill(string nameClient, int idBill, int money)
+        {
+            if(nameClient == "")
+            {
+                string query = "update HoaDon set TongTien=" + money + " where IDHoaDon=" + idBill;
+                DataProvider.Instance.ExucuteNonQuery(query);
+            }
+            else
+            {
+                string selectId = "select IDKhachHang from KhachHang where TenKhachHang = N'" + nameClient + "'";
+                DataTable result = DataProvider.Instance.ExecuteQuery(selectId);
+                int id = int.Parse(result.Rows[0].ItemArray[0].ToString());
+
+                string query = "update HoaDon set TongTien=" + money + ", IDKhachHang=" + id + " where IDHoaDon=" + idBill;
+                DataProvider.Instance.ExucuteNonQuery(query);
+
+                string upMeneyKhach = "update KhachHang set SoTienDaMua=SoTienDaMua + " + money + " where IDKhachHang=" + id;
+                DataProvider.Instance.ExucuteNonQuery(upMeneyKhach);
+
+                //string selectLevel = "select CapBac from KhachHang where TenKhachHang = N'" + nameClient + "'";
+                //DataTable resultLevel = DataProvider.Instance.ExecuteQuery(selectId);
+                //string level = result.Rows[0].ItemArray[0].ToString();
+
+
+                //Check vào update cấp bậc
+                string selectToTalMoner = " select Sum(TongTien) from HoaDon where IDKhachHang = " + id + " and TongTien > 0";
+                DataTable resultToTalMoner = DataProvider.Instance.ExecuteQuery(selectToTalMoner);
+                int ToTalMoner = int.Parse(resultToTalMoner.Rows[0].ItemArray[0].ToString());
+                Console.WriteLine(ToTalMoner.ToString());
+                if(ToTalMoner < 300000)
+                {
+                    string update = "update KhachHang set CapBac='Dong' where IDKhachHang=" + id;
+                    DataProvider.Instance.ExucuteNonQuery(update);
+                }
+                else if(ToTalMoner >= 300000 && ToTalMoner < 800000)
+                {
+                    string update = "update KhachHang set CapBac='Bac' where IDKhachHang=" + id;
+                    DataProvider.Instance.ExucuteNonQuery(update);
+                }
+                else if (ToTalMoner >= 800000 && ToTalMoner < 1500000)
+                {
+                    string update = "update KhachHang set CapBac='Vang' where IDKhachHang=" + id;
+                    DataProvider.Instance.ExucuteNonQuery(update);
+                }
+                else if (ToTalMoner >= 1500000)
+                {
+                    string update = "update KhachHang set CapBac='Bach Kim' where IDKhachHang=" + id;
+                    DataProvider.Instance.ExucuteNonQuery(update);
+                }
+            }
+        }
     }
 }
