@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1.FormDisplayManager
 {
@@ -15,6 +16,14 @@ namespace WindowsFormsApp1.FormDisplayManager
         public FormAccount()
         {
             InitializeComponent();
+        }
+
+        private void FormAccount_Load(object sender, EventArgs e)
+        {
+            dataGridViewBook.DataSource = AccountDAO.Instance.selectAccount();
+            dataGridViewBook.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewBook.Columns[0].Width = 50;
+            dataGridViewBook.ClearSelection();
         }
     }
 }

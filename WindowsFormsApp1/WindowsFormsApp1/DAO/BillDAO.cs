@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.DAO
 
         public object selectBill()
         {
-            string query = "";
+            string query = "Select * from HoaDon";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
