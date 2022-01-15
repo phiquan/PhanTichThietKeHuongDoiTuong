@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.DAO
 
         public object selectCreateBill()
         {
-            string query = "select Sach.IDSach as 'ID', Sach.TenSach, Sach.Gia as N'Giá' from Sach";
+            string query = "select Sach.IDSach as 'ID', Sach.TenSach, Sach.Gia as N'Giá' from Sach where visible=1";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1.DAO
 
         public void updateBill(string nameClient, int idBill, int money)
         {
-            if(nameClient == "")
+            if(nameClient == "Không Có")
             {
                 string query = "update HoaDon set TongTien=" + money + " where IDHoaDon=" + idBill;
                 DataProvider.Instance.ExucuteNonQuery(query);

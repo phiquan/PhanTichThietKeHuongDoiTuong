@@ -21,7 +21,8 @@ create table TaiKhoan
 	ID int, 
 	FOREIGN KEY (ID) REFERENCES PhanQuyen(ID), 
 )
-
+ALTER TABLE Sach
+  ADD visible int;
 
 create table KhachHang
 (
@@ -106,7 +107,7 @@ insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0
 
  update HoaDon set TongTien=123 where IDHoaDon=12
  update HoaDon set TongTien=123, IDKhachHang=1 where IDHoaDon=12
-
+ update KhachHang set TenKhachHang=N'', Email=N'', SDT='' where IDKhachHang=
  select CapBac
  from KhachHang
  where TenKhachHang=N'Sỹ Khá'
@@ -119,3 +120,11 @@ insert into KhachHang(TenKhachHang,SDT,Email,SoTienDaMua) values(N'Sỹ Khá','0
 
  update KhachHang set SoTienDaMua=SoTienDaMua + 12 where IDKhachHang=
  update KhachHang set CapBac='Bac' where IDKhachHang=1
+
+ select HoaDon.NgayInHoaDon, Sum(HoaDon.TongTien)
+ from HoaDon
+ where HoaDon.NgayInHoaDon>='2022-01-01'
+ group by HoaDon.NgayInHoaDon
+
+ select *
+ from HoaDon

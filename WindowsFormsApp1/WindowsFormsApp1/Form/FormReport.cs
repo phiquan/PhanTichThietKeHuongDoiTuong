@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1.FormDisplayManager
 {
@@ -16,9 +17,149 @@ namespace WindowsFormsApp1.FormDisplayManager
         {
             InitializeComponent();
         }
-
+        private int month = int.Parse(DateTime.Now.ToString("MM"));
         private void FormReport_Load(object sender, EventArgs e)
         {
+            chart1.DataSource = ReportDAO.Instance.see(month);
+            chart1.ChartAreas["ChartArea1"].AxisX.Title = "Doanh thu của tháng " + month.ToString();
+
+            chart1.Series["Tiền"].XValueMember = "DateBill";
+            chart1.Series["Tiền"].YValueMembers = "TotalPrice";
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            DataTable dt = ReportDAO.Instance.excel(month);
+            Export(dt);
+        }
+
+        public void Export(DataTable dt)
+        {
+
+            //Tạo các đối tượng Excel
+
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+            //Tạo mới một Excel WorkBook 
+
+            oExcel.Visible = true;
+
+            oExcel.DisplayAlerts = false;
+
+            oExcel.Application.SheetsInNewWorkbook = 1;
+
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+
+            oSheets = oBook.Worksheets;
+
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+            oSheet.Name = "Danh Sách";
+
+            // Tạo phần đầu nếu muốn
+
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "C1");
+
+            head.MergeCells = true;
+
+            head.Value2 = "Thống Kê Doanh Số Tháng " + month.ToString();
+
+            head.Font.Bold = true;
+
+            head.Font.Name = "Tahoma";
+
+            head.Font.Size = "18";
+
+            head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo tiêu đề cột 
+
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
+
+            cl1.Value2 = "Ngày";
+
+            cl1.ColumnWidth = 13.5;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
+
+            cl2.Value2 = "Số Tiền";
+
+            cl2.ColumnWidth = 25.0;
+
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "C3");
+
+            rowHead.Font.Bold = true;
+
+            // Kẻ viền
+
+            rowHead.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
+
+            // Thiết lập màu nền
+
+            rowHead.Interior.ColorIndex = 15;
+
+            rowHead.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+
+            object[,] arr = new object[dt.Rows.Count, dt.Columns.Count];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+
+            for (int r = 0; r < dt.Rows.Count; r++)
+
+            {
+
+                DataRow dr = dt.Rows[r];
+
+                for (int c = 0; c < dt.Columns.Count; c++)
+
+                {
+                    arr[r, c] = dr[c];
+                }
+            }
+
+            //Thiết lập vùng điền dữ liệu
+
+            int rowStart = 4;
+
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+
+            int columnEnd = dt.Columns.Count;
+
+            // Ô bắt đầu điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+
+            // Ô kết thúc điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+
+            // Lấy về vùng điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            //Điền dữ liệu vào vùng đã thiết lập
+
+            range.Value2 = arr;
+
+            // Kẻ viền
+
+            range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
 
         }
     }

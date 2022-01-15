@@ -39,6 +39,11 @@ namespace WindowsFormsApp1
 
             cbbKhach.Text = "Không Có";
 
+            dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(7);
+            dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewInfoBill.Columns[1].Width = 70;
+            dataGridViewInfoBill.ClearSelection();
+
         }
 
         private void txtTenSach_TextChanged(object sender, EventArgs e)
@@ -217,7 +222,10 @@ namespace WindowsFormsApp1
             txtGiamGia.Text = "";
             txtSoTien.Text = "";
             txtSoTienTra.Text = "";
-            dataGridViewInfoBill.Refresh();
+            dataGridViewInfoBill.DataSource = CreateBillDAO.Instance.selectInfoBill(7);
+            dataGridViewInfoBill.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewInfoBill.Columns[1].Width = 70;
+            dataGridViewInfoBill.ClearSelection();
         }
     }
 }

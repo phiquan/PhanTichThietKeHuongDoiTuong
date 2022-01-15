@@ -25,5 +25,6 @@ namespace WindowsFormsApp1.FormDisplayManager
             dataGridViewBook.Columns[0].Width = 50;
             dataGridViewBook.ClearSelection();
         }
+
     }
 }

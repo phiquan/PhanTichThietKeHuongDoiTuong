@@ -166,6 +166,7 @@ namespace WindowsFormsApp1.Dialog
             this.btnClient.TabIndex = 12;
             this.btnClient.Text = "button1";
             this.btnClient.UseVisualStyleBackColor = true;
+            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
             // 
             // labClient
             // 

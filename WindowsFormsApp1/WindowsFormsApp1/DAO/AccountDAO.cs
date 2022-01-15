@@ -20,8 +20,20 @@ namespace WindowsFormsApp1.DAO
 
         public object selectAccount()
         {
-            string query = "Select * from TaiKhoan";
+            string query = "Select IDTaiKhoan,TenTaiKhoan,MatKhau,Email,SDT,NgaySinh from TaiKhoan where visible=1 and ID=2";
             return DataProvider.Instance.ExecuteQuery(query);
+        }
+
+        public void add(string name, string pass, string email, int sdt)
+        {
+            string query = "insert into TaiKhoan(TenTaiKhoan,MatKhau,Email,SDT,visible) values(N'" + name + "','" + pass + "','" + email + "'," + sdt + ",2,1)";
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
+
+        public void delete(int id)
+        {
+            string query = "update TaiKhoan set visible=0 where IDTaiKhoan=" + id;
+            DataProvider.Instance.ExucuteNonQuery(query);
         }
     }
 }
