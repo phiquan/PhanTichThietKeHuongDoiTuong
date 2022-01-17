@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.DAO
 
         public object getKhach()
         {
-            string query = "select * from KhachHang";
+            string query = "select * from KhachHang where visible=1";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
@@ -132,6 +132,20 @@ namespace WindowsFormsApp1.DAO
                     string update = "update KhachHang set CapBac='Bach Kim' where IDKhachHang=" + id;
                     DataProvider.Instance.ExucuteNonQuery(update);
                 }
+            }
+        }
+
+        public void updateKho(int idBill)
+        {
+            string query1 = " select ChiTietHoaDon.IDSach, SUM(ChiTietHoaDon.SoLuong) from ChiTietHoaDon where ChiTietHoaDon.IDHoaDon = " + idBill + " group by ChiTietHoaDon.IDSach";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query1);
+
+            int len = result.Rows.Count;
+
+            for (int i = 0; i < len; i++)
+            {
+                string query2 = "update Sach set SoLuong=SoLuong-" + int.Parse(result.Rows[i].ItemArray[1].ToString()) + " where IDSach=" + int.Parse(result.Rows[i].ItemArray[0].ToString());
+                DataProvider.Instance.ExucuteNonQuery(query2);
             }
         }
     }

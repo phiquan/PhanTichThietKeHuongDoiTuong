@@ -46,6 +46,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             this.dataGridViewBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBook.Size = new System.Drawing.Size(761, 362);
             this.dataGridViewBook.TabIndex = 1;
+            this.dataGridViewBook.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBook_CellClick);
             // 
             // textBox1
             // 
@@ -65,6 +66,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -75,6 +77,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -85,6 +88,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FormAccount
             // 

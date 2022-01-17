@@ -212,7 +212,7 @@ namespace WindowsFormsApp1
         private void btnInBill_Click(object sender, EventArgs e)
         {
             CreateBillDAO.Instance.updateBill(cbbKhach.Text, int.Parse(txtSoHoaDon.Text), int.Parse(txtSoTienTra.Text));
-            
+            CreateBillDAO.Instance.updateKho(int.Parse(txtSoHoaDon.Text));
             cbbKhach.Text = "Không Có";
             btnInBill.Enabled = false;
             btnThem.Enabled = false;

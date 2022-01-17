@@ -78,6 +78,7 @@ namespace WindowsFormsApp1.FormDisplayManager
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnThem
             // 

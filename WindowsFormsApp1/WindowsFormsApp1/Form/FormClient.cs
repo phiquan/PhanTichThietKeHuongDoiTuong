@@ -30,6 +30,21 @@ namespace WindowsFormsApp1.FormDisplayManager
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var mess = MessageBox.Show("Bạn có muốn đăng xuất", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (mess == DialogResult.Yes)
+            {
+                ClientDAO.Instance.delete(int.Parse(id));
+                dataGridViewClient.DataSource = ClientDAO.Instance.selectClient();
+                dataGridViewClient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewClient.Columns[0].Width = 50;
+                dataGridViewClient.ClearSelection();
+            }
+            
+
+        }
+
         public FormClient()
         {
             InitializeComponent();
@@ -94,6 +109,8 @@ namespace WindowsFormsApp1.FormDisplayManager
             dataGridViewClient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewClient.Columns[0].Width = 50;
             dataGridViewClient.ClearSelection();
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.DAO
 
         public object selectAccount()
         {
-            string query = "Select IDTaiKhoan,TenTaiKhoan,MatKhau,Email,SDT,NgaySinh from TaiKhoan where visible=1 and ID=2";
+            string query = "Select IDTaiKhoan,TenTaiKhoan,MatKhau,Email,SDT from TaiKhoan where visible=1 and ID=2";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
@@ -33,6 +33,12 @@ namespace WindowsFormsApp1.DAO
         public void delete(int id)
         {
             string query = "update TaiKhoan set visible=0 where IDTaiKhoan=" + id;
+            DataProvider.Instance.ExucuteNonQuery(query);
+        }
+
+        public void update(string name, string pass, string email, int sdt,int id)
+        {
+            string query = "update TaiKhoan set TenTaiKhoan=N'" + name + "', MatKhau=N'" + pass + "', Email='" + email + "', SDT='" + sdt + "' where IDTaiKhoan=" + id;
             DataProvider.Instance.ExucuteNonQuery(query);
         }
     }
